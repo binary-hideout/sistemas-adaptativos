@@ -1,9 +1,6 @@
-#%%
 import math
 import random
 import pygame
-
-#TODO: ff 
 
 pygame.init()
 
@@ -18,5 +15,3 @@ for i in range(399):
         y = 400 + distance * math.sin(angle)
         screen.set_at((int(x), int(y)), (0,0,0))
     pygame.display.flip()
-
-#%%
