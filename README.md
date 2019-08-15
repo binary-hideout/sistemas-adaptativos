@@ -1,2 +1,2 @@
-# sistemas-adaptativos
-Actividades del laboratorio de programación de sistemas adaptativos
+# Sistemas adaptativos
+Actividades del laboratorio de programación de sistemas adaptativo
