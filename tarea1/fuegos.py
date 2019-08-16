@@ -3,9 +3,6 @@ import random
 import pygame
 from sys import argv
 
-import numpy
-numpy.any
-
 pygame.init()
 
 def explotar(pos_x, pos_y, radio, rgb_tuple):
