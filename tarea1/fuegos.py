@@ -20,4 +20,9 @@ def explotar(pos_x, pos_y, radio):
             screen.set_at((int(x), int(y)), (0,0,0))
         pygame.display.flip()
 
-explotar(400, 400, 400)
+def secuencia_explosiones(ciclos):
+    if ciclos > 0:
+        explotar(400, 400, 400)
+        secuencia_explosiones(ciclos - 1)
+
+secuencia_explosiones(2)
