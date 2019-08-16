@@ -6,9 +6,10 @@ from sys import argv
 pygame.init()
 
 def explotar(pos_x, pos_y, radio, rgb_tuple):
-    print("Posición X:", pos_x)
-    print("Posición Y:", pos_y)
-    print("Radio:", radio, "\n")
+    print("   Posición X:", pos_x)
+    print("   Posición Y:", pos_y)
+    print("   Radio:", radio)
+    print("   Color en RGB:", rgb_tuple, "\n")
 
     screen = pygame.display.set_mode((800, 800))
     particles = [(random.gauss(0, 0.5), random.uniform(0, 6.28318)) for i in range(2000)]
@@ -28,6 +29,7 @@ def secuencia_explosiones(ciclos, rgb_list):
         pos_y = random.randint(100, 700)
         radio = random.randint(100, 700)
 
+        print(i + 1, "° explosión", sep='')
         explotar(pos_x, pos_y, radio, rgb_list[i])
 
 def generarListaRGB(size):
