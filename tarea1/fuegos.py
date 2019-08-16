@@ -1,6 +1,8 @@
 import math
 import random
 import pygame
+from sys import argv
+
 pygame.init()
 
 def explotar(pos_x, pos_y, radio):
@@ -22,7 +24,15 @@ def explotar(pos_x, pos_y, radio):
 
 def secuencia_explosiones(ciclos):
     if ciclos > 0:
-        explotar(400, 400, 400)
+        pos_x = random.randint(100, 700)
+        pos_y = random.randint(100, 700)
+        radio = random.randint(100, 700)
+
+        explotar(pos_x, pos_y, radio)
         secuencia_explosiones(ciclos - 1)
 
-secuencia_explosiones(2)
+try:
+    arg_ciclos = int(argv[1])
+except:
+    arg_ciclos = 3
+secuencia_explosiones(arg_ciclos)
