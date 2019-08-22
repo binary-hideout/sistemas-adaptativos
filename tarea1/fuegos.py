@@ -15,7 +15,7 @@ def explotar(pos_x, pos_y, radio, rgb_tuple):
     particles = [(random.gauss(0, 0.5), random.uniform(0, 6.28318)) for i in range(2000)]
 
     for i in range(radio):
-        screen.fill((255,255,255))
+        screen.fill((0, 0, 0))
         for speed, angle in particles:
             distance = i * speed
             x = pos_x + distance * math.cos(angle)
@@ -24,24 +24,35 @@ def explotar(pos_x, pos_y, radio, rgb_tuple):
         pygame.display.flip()
 
 def secuencia_explosiones(ciclos, rgb_list):
+    """Las explosiones forman una diagonal.
+    """
+    # coordenadas del centro de la explosión
+    pos_x, pos_y = 100, 100
+    # incremento de las coordenadas para formar una diagonal
+    step = math.sqrt(2 * 400 * 400) / ciclos
+    # contador
     for i in range(ciclos):
-        pos_x = random.randint(100, 700)
-        pos_y = random.randint(100, 700)
         radio = random.randint(100, 700)
-
+        
         print(i + 1, "° explosión", sep='')
         explotar(pos_x, pos_y, radio, rgb_list[i])
+
+        pos_x += step
+        pos_y = pos_x
 
 def generarListaRGB(size):
     '''Genera una lista de tuples. Cada tuple contiene un color aleatorio en formato RGB.
     '''
     rgb_list = list()
-    for i in range(size):
+    while size > 0:
         red = random.randint(0, 255)
         green = random.randint(0, 255)
         blue = random.randint(0, 255)
         rgb = (red, green, blue)
         rgb_list.append(rgb)
+
+        size -= 1
+
     return rgb_list
 
 # validar si el comando contiene el argumento para la cantidad de explosiones
