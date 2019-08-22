@@ -23,26 +23,26 @@ def explotar(pos_x, pos_y, radio, rgb_tuple):
             screen.set_at((int(x), int(y)), rgb_tuple)
         pygame.display.flip()
 
-def secuencia_explosiones(n, rgb_list = list()):
+def secuencia_explosiones(tipo, cantidad, rgb_list = list()):
     """Genera 'n' explosiones en un patrón de diagonal.
     """
+    screen_divide = math.floor(800 / cantidad)
     # si la lista de colores está vacía
     if len(rgb_list) == 0:
-        rgb_list = generarListaRGB(n)
+        rgb_list = generarListaRGB(cantidad)
 
-    # coordenadas del centro de la explosión
-    pos_x, pos_y = 100, 100
-    # incremento de las coordenadas para formar una diagonal
-    step = math.sqrt(2 * 400 * 400) / n
-    # contador
-    for i in range(n):
-        radio = random.randint(100, 700)
-        
-        print(i + 1, "° explosión", sep='')
-        explotar(pos_x, pos_y, radio, rgb_list[i])
-
-        pos_x += step
-        pos_y = pos_x
+    if tipo.lower() == "horizontal":
+        for i in range(cantidad):
+            explotar(i * screen_divide, 500, 500, rgb_list[i])
+    elif tipo.lower() == "vertical":
+        for i in range(cantidad):
+            explotar(500, i * screen_divide, 500, rgb_list[i])
+    elif tipo.lower() == "diagonal":
+        for i in range(cantidad):
+            explotar(i * screen_divide, i * screen_divide, 500, rgb_list[i])
+    elif tipo.lower() == "random":
+        for i in range(cantidad):
+            explotar(random.randint(0, 800), random.randint(0, 800), 500, rgb_list[i])
 
 def generarListaRGB(size):
     '''Genera una lista de tuples. Cada tuple contiene un color aleatorio en formato RGB.
@@ -66,9 +66,10 @@ explotar(300, 221, 670, (255, 0, 0))
 
 # validar si el comando contiene el argumento para la cantidad de explosiones
 try:
-    arg_ciclos = int(argv[1])
+    arg_tipo = argv[1]
+    arg_ciclos = int(argv[2])
 except:
     arg_ciclos = 2
 
 print("Llamada a la función 'secuencia_explosiones'")
-secuencia_explosiones(arg_ciclos)
+secuencia_explosiones(arg_tipo, arg_ciclos)
