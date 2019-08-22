@@ -23,15 +23,19 @@ def explotar(pos_x, pos_y, radio, rgb_tuple):
             screen.set_at((int(x), int(y)), rgb_tuple)
         pygame.display.flip()
 
-def secuencia_explosiones(ciclos, rgb_list):
-    """Las explosiones forman una diagonal.
+def secuencia_explosiones(n, rgb_list):
+    """Genera 'n' explosiones en un patrón de diagonal.
     """
+    # si la lista de colores está vacía
+    if len(rgb_list) == 0:
+        rgb_list = generarListaRGB(n)
+
     # coordenadas del centro de la explosión
     pos_x, pos_y = 100, 100
     # incremento de las coordenadas para formar una diagonal
-    step = math.sqrt(2 * 400 * 400) / ciclos
+    step = math.sqrt(2 * 400 * 400) / n
     # contador
-    for i in range(ciclos):
+    for i in range(n):
         radio = random.randint(100, 700)
         
         print(i + 1, "° explosión", sep='')
@@ -55,11 +59,15 @@ def generarListaRGB(size):
 
     return rgb_list
 
+explotar(255, 500, 333, (0, 0, 255))
+explotar(500, 100, 880, (0, 255, 0))
+explotar(300, 221, 670, (255, 0, 0))
+
 # validar si el comando contiene el argumento para la cantidad de explosiones
 try:
     arg_ciclos = int(argv[1])
 except:
-    arg_ciclos = 3
+    arg_ciclos = 2
 
 rgb_list = generarListaRGB(arg_ciclos)
 secuencia_explosiones(arg_ciclos, rgb_list)
