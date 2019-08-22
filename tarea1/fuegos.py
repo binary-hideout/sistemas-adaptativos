@@ -12,7 +12,7 @@ def explotar(pos_x, pos_y, radio, rgb_tuple):
     print("   Color en RGB:", rgb_tuple, "\n")
 
     screen = pygame.display.set_mode((800, 800))
-    particles = [(random.gauss(0, 0.5), random.uniform(0, 6.28318)) for i in range(2000)]
+    particles = [(random.gauss(0, 10), random.uniform(0, 6.28318)) for i in range(random.randint(500, 9000))]
 
     for i in range(radio):
         screen.fill((0, 0, 0))
@@ -59,6 +59,7 @@ def generarListaRGB(size):
 
     return rgb_list
 
+print("3 llamadas a la función 'explotar'")
 explotar(255, 500, 333, (0, 0, 255))
 explotar(500, 100, 880, (0, 255, 0))
 explotar(300, 221, 670, (255, 0, 0))
@@ -69,4 +70,5 @@ try:
 except:
     arg_ciclos = 2
 
+print("Llamada a la función 'secuencia_explosiones'")
 secuencia_explosiones(arg_ciclos)
