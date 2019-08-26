@@ -7,15 +7,15 @@ cesar3={'a':'d','b':'e','c':'f','d':'g','e':'h','f':'i','g':'j','h':'k','i':'l',
 def generar_cifrador(offset):
     #se declara e instancia una variable de tipo lista que contiene todos los caracteres del alfabeto.
     letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-	#se declara e instancia un diccionario donde va a guardar las reglas para el cifrado que se genere.
+    #se declara e instancia un diccionario donde va a guardar las reglas para el cifrado que se genere.
     offset_dict = {}
-	#loop que recorre todos los caracteres de las letras.
+    #loop que recorre todos los caracteres de las letras.
     for char in letras:
-    	#if-else que revisa si nuestro indice actual del ciclo + offset se pasan de la cantidad de elementos de la lista.
+        #if-else que revisa si nuestro indice actual del ciclo + offset se pasan de la cantidad de elementos de la lista.
         if (letras.index(char) + offset) >= len(letras):
-    	    offset_dict[char] = letras[letras.index(char) + offset - len(letras)]
+            offset_dict[char] = letras[letras.index(char) + offset - len(letras)]
         else:
-    	    offset_dict[char] = letras[letras.index(char) + offset]
+            offset_dict[char] = letras[letras.index(char) + offset]
     return offset_dict
 
 #cifrar, recibe una variable de tipo string y otra de tipo diccionario. (Parte B)
@@ -27,7 +27,7 @@ def cifrar(palabra, cifrador):
         #se asegura que el caracter sea parte de las llaves dentro de nuestro diccionario.
         if char in cifrador.keys():
             string_cifrado += cifrador[char]
-		#de lo contrario, simplemente se agrega el caracter normal.
+        #de lo contrario, simplemente se agrega el caracter normal.
         else:
             string_cifrado += char
     return string_cifrado
@@ -59,6 +59,7 @@ def leer_archivo(file, cantidad):
         curp = primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]
     cifrador = generar_cifrador(cantidad)
     mostrar_cifrador(nombre_partes, cifrador, curp)
+
 try:
     file = argv[1]
 except:
