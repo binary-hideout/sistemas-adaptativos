@@ -1,4 +1,4 @@
-import sys
+from sys import argv
 
 cesar3={'a':'d','b':'e','c':'f','d':'g','e':'h','f':'i','g':'j','h':'k','i':'l','j':'m','k':'n','l':'o','m':'p','n':'q','o':'r','p':'s','q':'t','r':'u','s':'v','t':'w','u':'x','v':'y','w':'z','x':'a','y':'b','z':'c'}
 
@@ -33,12 +33,15 @@ def cifrar(palabra, cifrador):
     return string_cifrado
 
 #mostrar_cifrador, se trata de una funcion que imprime los datos cifrados, guardados en un diccionaro. (Parte C)
-def mostrar_cifrador(nombre, cifrador):
+def mostrar_cifrador(nombre_partes, cifrador, curp):
+    nombre = ''
+    for partes in nombre_partes:
+        nombre += partes + " "
     usuario_datos = {'nombre': nombre, 'cesar3': cifrar(nombre, cesar3), 'cesarx': cifrar(nombre, cifrador), 'curp': curp}
     for key, value in usuario_datos.items():
         print(key + ": " + value)
 
-def leer_archivo(file):
+def leer_archivo(file, cantidad):
     with open(file) as file_object:
         lines = file_object.readlines()
         for line in lines:
@@ -53,15 +56,17 @@ def leer_archivo(file):
         nombre = nombre_partes[0]
         primer_apellido = nombre_partes[2]
         segundo_apellido = nombre_partes[3]
-        # AAAAAH PERRO TRAES YEEZYS
-# AAAAAH PERRO TRAES YEEZYZ
         curp = primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]
-    print(curp)
+    cifrador = generar_cifrador(cantidad)
+    mostrar_cifrador(nombre_partes, cifrador, curp)
+try:
+    file = argv[1]
+except:
+    file = 1
 
-file = "name.txt"
-leer_archivo(file)
-cifrador = generar_cifrador(7)
-#Completa el resto del codigo
-mostrar_cifrador('jose daniel', cifrador)
-# AAAAAH PERRO TRAES YEEZYS
-# AAAAAH PERRO TRAES YEEZYZ
+try:
+    argv_cantidad = int(argv[2])
+except:
+    argv_cantidad = 3
+
+leer_archivo(file, argv_cantidad)
