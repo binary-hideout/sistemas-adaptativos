@@ -36,8 +36,8 @@ def cifrar(palabra, cifrador):
 def mostrar_cifrador(nombre_partes, cifrador, curp):
     nombre = ''
     for partes in nombre_partes:
-        nombre += partes + " "
-    usuario_datos = {'nombre': nombre, 'cesar3': cifrar(nombre, cesar3), 'cesarx': cifrar(nombre, cifrador), 'curp': curp}
+        nombre += (partes + " ").lower()
+    usuario_datos = {'Nombre': nombre, 'Nombre cifrado': cifrar(nombre, cesar3), 'Nombre cifrado con N desfase': cifrar(nombre, cifrador), 'CURP': curp}
     for key, value in usuario_datos.items():
         print(key + ": " + value)
 
@@ -51,19 +51,19 @@ def leer_archivo(file, cantidad):
         nombre = nombre_partes[0]
         primer_apellido = nombre_partes[1]
         segundo_apellido = nombre_partes[2]
-        curp = primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]
+        curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
     else:
         nombre = nombre_partes[0]
         primer_apellido = nombre_partes[2]
         segundo_apellido = nombre_partes[3]
-        curp = primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]
+        curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
     cifrador = generar_cifrador(cantidad)
     mostrar_cifrador(nombre_partes, cifrador, curp)
 
 try:
     file = argv[1]
 except:
-    file = 1
+    file = "name.txt"
 
 try:
     argv_cantidad = int(argv[2])
