@@ -2,9 +2,11 @@ from sys import argv
 
 cesar3 = {'a':'d','b':'e','c':'f','d':'g','e':'h','f':'i','g':'j','h':'k','i':'l','j':'m','k':'n','l':'o','m':'p','n':'q','o':'r','p':'s','q':'t','r':'u','s':'v','t':'w','u':'x','v':'y','w':'z','x':'a','y':'b','z':'c'}
 
-#generar_cifrador, funcion que recibe un valor de tipo entero 
-# y se encarga de crear un diccionario con la llave-valor del cifrador. (Parte A)
+# Parte A
 def generar_cifrador(offset):
+    """Recibe un valor de tipo entero y regresa un diccionario con la llave-valor del cifrador.
+    """
+
     #se declara e instancia una variable de tipo lista que contiene todos los caracteres del alfabeto.
     letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     #se declara e instancia un diccionario donde va a guardar las reglas para el cifrado que se genere.
@@ -18,8 +20,12 @@ def generar_cifrador(offset):
             offset_dict[char] = letras[letras.index(char) + offset]
     return offset_dict
 
-#cifrar, recibe una variable de tipo string y otra de tipo diccionario. (Parte B)
+# Parte B
 def cifrar(palabra, cifrador):
+    """Recibe un string con texto sin cifrar y un diccionario que contiene el cifrador.
+    
+    Regresa el string cifrado.
+    """
     #se declara e instancia una variable de tipo string donde se va a asignar el resultado del cifrado.
     string_cifrado = ''
     #loop que recorre cada caracter de la palabra.
@@ -32,8 +38,10 @@ def cifrar(palabra, cifrador):
             string_cifrado += char
     return string_cifrado
 
-#mostrar_cifrador, se trata de una funcion que imprime los datos cifrados, guardados en un diccionaro. (Parte C)
+# Parte C
 def mostrar_cifrador(nombre_partes, cifrador, curp):
+    """Imprime los datos cifrados, guardados en un diccionaro.
+    """
     nombre = ''
     #loop que recorre cada elemento de la lista nombre_partes.
     for partes in nombre_partes:
@@ -45,8 +53,10 @@ def mostrar_cifrador(nombre_partes, cifrador, curp):
     for key, value in usuario_datos.items():
         print(key + ": " + value)
 
-#leer_archivo, funcion que recibe un archivo y el desfase para generar el cifrador de N desfase.
+#leer_archivo, funcion que 
 def leer_archivo(file, desfase):
+    """Recibe el nombre con extensión de un archivo y el desfase del cifrador a probar con el contenido del archivo.
+    """
     with open(file) as file_object:
         lines = file_object.readlines()
         for line in lines:
