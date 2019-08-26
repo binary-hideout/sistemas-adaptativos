@@ -35,13 +35,19 @@ def cifrar(palabra, cifrador):
 #mostrar_cifrador, se trata de una funcion que imprime los datos cifrados, guardados en un diccionaro. (Parte C)
 def mostrar_cifrador(nombre_partes, cifrador, curp):
     nombre = ''
+    #loop que recorre cada elemento de la lista nombre_partes.
     for partes in nombre_partes:
+        #agrega cada parte de la lista a la variable de tipo string nombre, tambien utiliza el metodo lower().
         nombre += (partes + " ").lower()
+    #guarda todos los valores con sus respectivas llaves en un diccionario, como lo establece la parte C.
     usuario_datos = {'Nombre': nombre, 'Nombre cifrado': cifrar(nombre, cesar3), 'Nombre cifrado con N desfase': cifrar(nombre, cifrador), 'CURP': curp}
+    #loop que utiliza el metodo items() la cual retorna la llave y su valor.
     for key, value in usuario_datos.items():
         print(key + ": " + value)
 
-def leer_archivo(file, cantidad):
+#leer_archivo, funcion que recibe un archivo y el desfase para generar el cifrador de N desfase.
+#TODO: Buscar una mejor manera de organizar esta funcion.
+def leer_archivo(file, desfase):
     with open(file) as file_object:
         lines = file_object.readlines()
         for line in lines:
@@ -57,7 +63,7 @@ def leer_archivo(file, cantidad):
         primer_apellido = nombre_partes[2]
         segundo_apellido = nombre_partes[3]
         curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
-    cifrador = generar_cifrador(cantidad)
+    cifrador = generar_cifrador(desfase)
     mostrar_cifrador(nombre_partes, cifrador, curp)
 
 try:
