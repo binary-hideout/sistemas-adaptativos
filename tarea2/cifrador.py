@@ -1,6 +1,6 @@
 from sys import argv
 
-cesar3={'a':'d','b':'e','c':'f','d':'g','e':'h','f':'i','g':'j','h':'k','i':'l','j':'m','k':'n','l':'o','m':'p','n':'q','o':'r','p':'s','q':'t','r':'u','s':'v','t':'w','u':'x','v':'y','w':'z','x':'a','y':'b','z':'c'}
+cesar3 = {'a':'d','b':'e','c':'f','d':'g','e':'h','f':'i','g':'j','h':'k','i':'l','j':'m','k':'n','l':'o','m':'p','n':'q','o':'r','p':'s','q':'t','r':'u','s':'v','t':'w','u':'x','v':'y','w':'z','x':'a','y':'b','z':'c'}
 
 #generar_cifrador, funcion que recibe un valor de tipo entero 
 # y se encarga de crear un diccionario con la llave-valor del cifrador. (Parte A)
@@ -46,23 +46,17 @@ def mostrar_cifrador(nombre_partes, cifrador, curp):
         print(key + ": " + value)
 
 #leer_archivo, funcion que recibe un archivo y el desfase para generar el cifrador de N desfase.
-#TODO: Buscar una mejor manera de organizar esta funcion.
 def leer_archivo(file, desfase):
     with open(file) as file_object:
         lines = file_object.readlines()
         for line in lines:
             nombre_partes = line.split()
-    curp = ''
-    if len(nombre_partes) == 3:
-        nombre = nombre_partes[0]
-        primer_apellido = nombre_partes[1]
-        segundo_apellido = nombre_partes[2]
-        curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
-    else:
-        nombre = nombre_partes[0]
-        primer_apellido = nombre_partes[2]
-        segundo_apellido = nombre_partes[3]
-        curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
+    
+    nombre = nombre_partes[0]
+    primer_apellido = nombre_partes[-2]
+    segundo_apellido = nombre_partes[-1]
+    curp = (primer_apellido[:2] + segundo_apellido[:1] + nombre[:1]).upper()
+
     cifrador = generar_cifrador(desfase)
     mostrar_cifrador(nombre_partes, cifrador, curp)
 
