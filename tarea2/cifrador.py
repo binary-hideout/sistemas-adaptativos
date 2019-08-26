@@ -8,7 +8,7 @@ def generar_cifrador(offset):
     """
 
     #se declara e instancia una variable de tipo lista que contiene todos los caracteres del alfabeto.
-    letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    letras = [chr(l) for l in range(97, 123)]
     #se declara e instancia un diccionario donde va a guardar las reglas para el cifrado que se genere.
     offset_dict = {}
     #loop que recorre todos los caracteres de las letras.
@@ -53,10 +53,10 @@ def mostrar_cifrador(nombre_partes, cifrador, curp):
     for key, value in usuario_datos.items():
         print(key + ": " + value)
 
-#leer_archivo, funcion que 
 def leer_archivo(file, desfase):
     """Recibe el nombre con extensión de un archivo y el desfase del cifrador a probar con el contenido del archivo.
     """
+    
     with open(file) as file_object:
         lines = file_object.readlines()
         for line in lines:
