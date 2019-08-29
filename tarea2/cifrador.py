@@ -70,6 +70,9 @@ def leer_archivo(file, desfase):
     cifrador = generar_cifrador(desfase)
     mostrar_cifrador(nombre_partes, cifrador, curp)
 
+    for key, value in cifrador.items():
+        print("Letra: " + key + "\t" + "Letra cifrada: " + value)
+
 try:
     file = argv[1]
 except:
