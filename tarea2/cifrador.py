@@ -73,11 +73,13 @@ def leer_archivo(file, desfase):
     for key, value in cifrador.items():
         print("Letra: " + key + "\t" + "Letra cifrada: " + value)
 
+# validar primer argumento (nombre de archivo)
 try:
     file = argv[1]
 except:
     file = "name.txt"
 
+# validar segundo argumento (desfase)
 try:
     argv_cantidad = int(argv[2])
 except:
