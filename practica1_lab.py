@@ -55,6 +55,6 @@ def dist_euclidiana_rgb(p2):
              x=p1
     print('La menor distancia fue:', dist_menor, ', con el punto: ',x)
 
-
+#color muestra
 dist_euclidiana_rgb([0,253,0])
 
