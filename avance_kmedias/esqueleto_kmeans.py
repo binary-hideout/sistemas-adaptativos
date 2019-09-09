@@ -24,7 +24,11 @@ def calcularDistanciaEuclideana(puntoA, puntoB):
     ''' (A) Primer funcion a completar 
     Entradas: puntoA y puntoB -- son listas numericas de cualquier longitud (debe ser la misma longitud en ambas listas).
     Salida: Distancia euclidiana entre las listas.'''
-    return sqrt((puntoB[0] - puntoA[0]) ** 2 + (puntoB[1] - puntoA[1]) ** 2 + (puntoB[2] - puntoA[2]) ** 2)
+    dimension = len(puntoA)
+    suma = 0
+    for i in range(dimension):
+        suma += (puntoB[i] - puntoA[i]) ** 2
+    return sqrt(suma)
 
 def actualizarCentroide(datos, grupos, indiceCentroide):
     ''' (B) Segunda funcion a completar
