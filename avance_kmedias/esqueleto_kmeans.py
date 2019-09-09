@@ -42,9 +42,9 @@ def actualizarCentroide(datos, grupos, indiceCentroide):
     for i in range(len(datos[0])):
         suma = 0.0
         cantidad = 0
-        for j in range(len(datos)):
-            if grupos[j] == indiceCentroide:
-                suma += datos[j][i]
+        for indice, muestra in enumerate(datos):
+            if grupos[indice] == indiceCentroide:
+                suma += muestra[i]
                 cantidad += 1
         nuevo_centroide.append(suma / cantidad)
     return tuple(nuevo_centroide)
