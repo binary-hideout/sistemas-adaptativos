@@ -53,7 +53,7 @@ def centroideMasCercano(centroides, muestra):
     return k
 
 datos = ((153, 51, 255), (121, 236, 221), (209, 236, 121), (240, 164, 76), (240, 98, 76), (76, 93, 240), (50, 239, 94))
-centroides = ((255, 0, 0), (0, 255, 0), (0, 0, 255)) #Inicializacion de centroides
+centroides = [(255, 0, 0), (0, 255, 0), (0, 0, 255)] #Inicializacion de centroides
 
 grupos = list()
 
