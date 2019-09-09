@@ -54,7 +54,7 @@ def centroideMasCercano(centroides, muestra):
     '''Recibe una 'muestra' que almacena un elemento de una colección de datos y 'centroides' que almacena una colección de los centroides.
     Regresa 'k' que es la posición del centroide más cercano.
     '''
-    menor = float_info.max()
+    menor = float_info.max
     for i in range(3):
         dist = calcularDistanciaEuclideana(muestra, centroides[i])
         if dist < menor:
@@ -75,6 +75,7 @@ for i in range(len(datos)):
 print(grupos)
 
 # (D) Bloque de codigo: Actualizacion de centroides
-# AQUI EMPIEZA TU CODIGO
+for i in range(len(centroides)):
+    centroides[i] = actualizarCentroide(datos, grupos, i)
 
 print(centroides) #Imprime centroides actualizados
