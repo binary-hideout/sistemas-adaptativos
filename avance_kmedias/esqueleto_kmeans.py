@@ -25,7 +25,7 @@ def calcularDistanciaEuclideana(puntoA, puntoB):
     Entradas: puntoA y puntoB -- son listas numericas de cualquier longitud (debe ser la misma longitud en ambas listas).
     Salida: Distancia euclidiana entre las listas.'''
     dimension = len(puntoA)
-    suma = 0
+    suma = 0.0
     for i in range(dimension):
         suma += (puntoB[i] - puntoA[i]) ** 2
     return sqrt(suma)
@@ -38,7 +38,17 @@ def actualizarCentroide(datos, grupos, indiceCentroide):
         indiceCentroide -- centroide a actualizarCentroide
         Salida: lista que contiene los nuevos valores para el centroide cuyo indice es indiceCentroide
     '''
-    pass
+    nuevo_centroide = list()
+    for i in range(len(datos[0])):
+        suma = 0.0
+        cantidad = 0
+        for j in range(len(datos)):
+            if grupos[j] == indiceCentroide:
+                suma += datos[j][i]
+                cantidad += 1
+        nuevo_centroide.append(suma / cantidad)
+    return tuple(nuevo_centroide)
+    
 
 def centroideMasCercano(centroides, muestra):
     '''Recibe una 'muestra' que almacena un elemento de una colección de datos y 'centroides' que almacena una colección de los centroides.
