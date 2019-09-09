@@ -37,7 +37,7 @@ def actualizarCentroide(datos, grupos, indiceCentroide):
     pass
 
 def centroideMasCercano(centroides, muestra):
-    '''Recibe una 'muestra' que almacena una colección de los datos y 'centroides' que almacena una colección de los centroides.
+    '''Recibe una 'muestra' que almacena un elemento de una colección de datos y 'centroides' que almacena una colección de los centroides.
     Regresa 'k' que es la posición del centroide más cercano.
     '''
     menor = float_info.max()
@@ -51,10 +51,12 @@ def centroideMasCercano(centroides, muestra):
 datos = ((153, 51, 255), (121, 236, 221), (209, 236, 121), (240, 164, 76), (240, 98, 76), (76, 93, 240), (50, 239, 94))
 centroides = ((255, 0, 0), (0, 255, 0), (0, 0, 255)) #Inicializacion de centroides
 
-grupos = []
+grupos = list()
 
 # (C) Bloque de codigo: Calculo de distancias y asignacion de grupos
-# AQUI EMPIEZA TU CODIGO
+for i in range(len(datos)):
+    pertenencia = centroideMasCercano(centroides, datos[i])
+    grupos.append(pertenencia)
 
 print(grupos)
 
