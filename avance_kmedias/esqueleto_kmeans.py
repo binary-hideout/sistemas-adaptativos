@@ -19,6 +19,7 @@ Eleva numero a la potencia indicada.
 
 from math import sqrt
 from sys import float_info
+from random import randint
 
 def calcularDistanciaEuclideana(puntoA, puntoB):
     ''' (A) Primer funcion a completar 
@@ -79,3 +80,11 @@ for i in range(len(centroides)):
     centroides[i] = actualizarCentroide(datos, grupos, i)
 
 print(centroides) #Imprime centroides actualizados
+
+print('\nArchivo de datos:')
+data = list()
+with open('datos_nivel_bonus.txt.txt', 'r') as file:
+    for line in file.readlines():
+        sample = [int(num) for num in line.split()]
+        data.append(sample)
+
