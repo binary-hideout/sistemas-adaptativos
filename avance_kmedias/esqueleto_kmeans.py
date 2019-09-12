@@ -47,6 +47,8 @@ def actualizarCentroide(datos, grupos, indiceCentroide):
             if grupos[indice] == indiceCentroide:
                 suma += muestra[i]
                 cantidad += 1
+        if cantidad == 0:
+            return indiceCentroide
         nuevo_centroide.append(suma / cantidad)
     return tuple(nuevo_centroide)
     
@@ -56,35 +58,52 @@ def centroideMasCercano(centroides, muestra):
     Regresa 'k' que es la posición del centroide más cercano.
     '''
     menor = float_info.max
-    for i in range(3):
-        dist = calcularDistanciaEuclideana(muestra, centroides[i])
+    for indice, centroide in enumerate(centroides):
+        dist = calcularDistanciaEuclideana(muestra, centroide)
         if dist < menor:
             menor = dist
-            k = i
+            k = indice
     return k
 
+def agrupar(datos, centroides):
+    '''Agrupa los datos y actualiza centroides.
+    '''
+    print('Centroides originales:')
+    print('\t', centroides)
+    grupos = list()
+
+    # (C) Bloque de codigo: Calculo de distancias y asignacion de grupos
+    for i in range(len(datos)):
+        pertenencia = centroideMasCercano(centroides, datos[i])
+        grupos.append(pertenencia)
+
+    print('Grupos de pertenencia:')
+    print('\t' ,grupos)
+
+    # (D) Bloque de codigo: Actualizacion de centroides
+    for i in range(len(centroides)):
+        nuevo = actualizarCentroide(datos, grupos, i)
+        # validar si el centroide se actualizó o no
+        try:
+            len(nuevo)
+            centroides[i] = nuevo
+        except:
+            continue
+    
+    print('Centroides actualizados:')
+    print('\t' ,centroides) #Imprime centroides actualizados
+
+print('\n-----Colores-----')
 datos = ((153, 51, 255), (121, 236, 221), (209, 236, 121), (240, 164, 76), (240, 98, 76), (76, 93, 240), (50, 239, 94))
 centroides = [(255, 0, 0), (0, 255, 0), (0, 0, 255)] #Inicializacion de centroides
+agrupar(datos, centroides)
 
-grupos = list()
-
-# (C) Bloque de codigo: Calculo de distancias y asignacion de grupos
-for i in range(len(datos)):
-    pertenencia = centroideMasCercano(centroides, datos[i])
-    grupos.append(pertenencia)
-
-print(grupos)
-
-# (D) Bloque de codigo: Actualizacion de centroides
-for i in range(len(centroides)):
-    centroides[i] = actualizarCentroide(datos, grupos, i)
-
-print(centroides) #Imprime centroides actualizados
-
-print('\nArchivo de datos:')
+print('\n-----Archivo de datos-----')
 data = list()
 with open('datos_nivel_bonus.txt.txt', 'r') as file:
     for line in file.readlines():
         sample = [int(num) for num in line.split()]
         data.append(sample)
 
+centers = [data[randint(0, 149)] for i in range(5)]
+agrupar(data, centers)
