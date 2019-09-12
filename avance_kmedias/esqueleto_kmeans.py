@@ -69,7 +69,7 @@ def agrupar(datos, centroides):
     '''Agrupa los datos y actualiza centroides.
     '''
     print('Centroides originales:')
-    print('\t', centroides)
+    print(centroides)
     grupos = list()
 
     # (C) Bloque de codigo: Calculo de distancias y asignacion de grupos
@@ -78,7 +78,7 @@ def agrupar(datos, centroides):
         grupos.append(pertenencia)
 
     print('Grupos de pertenencia:')
-    print('\t' ,grupos)
+    print(grupos)
 
     # (D) Bloque de codigo: Actualizacion de centroides
     for i in range(len(centroides)):
@@ -91,7 +91,7 @@ def agrupar(datos, centroides):
             continue
     
     print('Centroides actualizados:')
-    print('\t' ,centroides) #Imprime centroides actualizados
+    print(centroides) #Imprime centroides actualizados
 
 print('\n-----Colores-----')
 datos = ((153, 51, 255), (121, 236, 221), (209, 236, 121), (240, 164, 76), (240, 98, 76), (76, 93, 240), (50, 239, 94))
@@ -100,7 +100,7 @@ agrupar(datos, centroides)
 
 print('\n-----Archivo de datos-----')
 data = list()
-with open('datos_nivel_bonus.txt.txt', 'r') as file:
+with open('datos_nivel_bonus.txt', 'r') as file:
     for line in file.readlines():
         sample = [int(num) for num in line.split()]
         data.append(sample)
