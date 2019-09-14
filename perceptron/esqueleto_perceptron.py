@@ -8,8 +8,11 @@ def funcion_nucleo(pesos, entrada):
 	return sum([w * x for w, x in zip(pesos, entrada)])
 
 def funcion_activacion(resultado_nucleo):
-	#2--COMPLETA AQUI EL RESTO DE LA FUNCION
+	'''Aplica la función escalonada.
 
+	resultado_nucleo: parámetro para la función.
+	'''
+	return 1 if resultado_nucleo >= 0 else 0
 
 max_iter=50
 tasa_aprendizaje=0.1
