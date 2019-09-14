@@ -35,35 +35,30 @@ salidas = [1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0]
 
 max_iter = 1000
 tasa_aprendizaje = 0.1
-iter=0
-pincorrectos=1.0
+iteracion = 0
+pincorrectos = 1.0
+while pincorrectos > 0 and iteracion < max_iter:
+	print("\nITERACION %d" % iteracion)
+	incorrectos = 0
 
-while(pincorrectos>0.2 and iter<max_iter):
+	for entrada, salida in zip(entradas, salidas):
+		print("\nProcesando entrada:", entrada)
+		print("Salida esperada:", salida)
 
-	incorrectos=0
-	
-	print()
-	print("ITERACION " + str(iter))
-	print()
+		prediccion = funcion_activacion(funcion_nucleo(pesos, entrada))
+		print("Predicción:", prediccion)
+		if prediccion != salida:
+			incorrectos += 1
 
-	for entrada in entradas:
-		print("Procesando entrada: ")
-		print(entrada[0])
-		print()
-		y=funcion_activacion(funcion_nucleo(pesos,entrada[0]))
-		d=entrada[1]
-		if y!=d:
-			incorrectos=incorrectos+1
-			print("ACTUALIZANDO PESOS")
-			for i in range(len(pesos)):
-				pesos[i]=pesos[i] + 0
-				print("w"+str(i) + "=" + str(pesos[i]))
-			print()
+			print("\n-----ACTUALIZANDO PESOS-----")
+			error = salida - prediccion
+			for i, x_i in zip(range(len(pesos)), entrada):
+				pesos[i] += tasa_aprendizaje * x_i * error
+				print("w%d = %g" % (i, pesos[i]))
+	pincorrectos = incorrectos * 1.0 / len(entradas)
+	iteracion += 1
 
-
-	pincorrectos=incorrectos*1.0/len(entradas)
-	print(str(pincorrectos*100)+"% de entradas procesadas incorrectamente")
-	iter=iter+1
+print("\n%g%% de entradas procesadas incorrectamente" % (pincorrectos * 100))
 
 print()	
 print("Pesos finales:")
