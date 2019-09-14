@@ -1,10 +1,16 @@
 def funcion_nucleo(pesos, entrada):
-	#1--COMPLETA AQUI EL RESTO DE LA FUNCION
+	'''Calcula la suma ponderada de 2 listas.
+
+	pesos: lista que almacena los valores de los pesos.
+
+	entrada: lista que almacena los valores de una entrada.
+	'''
+	return sum([w * x for w, x in zip(pesos, entrada)])
 
 def funcion_activacion(resultado_nucleo):
 	#2--COMPLETA AQUI EL RESTO DE LA FUNCION
 
-		
+
 max_iter=50
 tasa_aprendizaje=0.1
 pesos=[1,0,0,0,0,0,0]
@@ -34,7 +40,7 @@ while(pincorrectos>0.2 and iter<max_iter):
 			incorrectos=incorrectos+1
 			print("ACTUALIZANDO PESOS")
 			for i in range(len(pesos)):
-				pesos[i]=pesos[i] + #3--COMPLETA AQUI LO QUE FALTA
+				pesos[i]=pesos[i] + 0
 				print("w"+str(i) + "=" + str(pesos[i]))
 			print()
 
