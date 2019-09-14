@@ -1,3 +1,5 @@
+from random import random
+
 def funcion_nucleo(pesos, entrada):
 	'''Calcula la suma ponderada de 2 listas.
 
@@ -16,7 +18,7 @@ def funcion_activacion(resultado_nucleo):
 
 max_iter=50
 tasa_aprendizaje=0.1
-pesos=[1,0,0,0,0,0,0]
+pesos = [random() for _ in range(7)]
 entradas=[[[-1,1,0,1,0,0,0], 1], [[-1,1,0,1,1,0,0], 1], [[-1,1,0,1,0,1,0], 1] 
 , [[-1,1,1,0,0,1,1], 1], [[-1,1,1,1,1,0,0], 1], [[-1,1,0,0,0,1,1], 1], [[-1,1,0,0,0,1,0], 0] 
 , [[-1,0,1,1,1,0,1], 1], [[-1,0,1,1,0,1,1], 0], [[-1,0,0,0,1,1,0], 0], [[-1,0,1,0,1,0,1], 0], 
