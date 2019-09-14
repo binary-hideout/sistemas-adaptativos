@@ -60,9 +60,6 @@ while pincorrectos > 0 and iteracion < max_iter:
 
 print("\n%g%% de entradas procesadas incorrectamente" % (pincorrectos * 100))
 
-print()	
-print("Pesos finales:")
-print()
-
-for i in range(len(pesos)):
-	print("w"+str(i) + "=" + str(pesos[i]))
+print("\nPesos finales:")
+for i, w in enumerate(pesos):
+	print("w%d = %g" % (i, pesos[i]))
