@@ -17,8 +17,8 @@ def calcular(lines):
 
 	densidad = (2 * m) / (n * (n - 1))
 
-	print('n:', n)
-	print('m:', m)
+	print('n (cantidad de nodos):', n)
+	print('m (cantidad de aristas):', m)
 	print('Densidad:', densidad)
 
 	for indice, grado in enumerate(grados):
