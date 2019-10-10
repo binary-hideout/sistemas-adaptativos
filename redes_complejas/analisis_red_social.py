@@ -21,9 +21,9 @@ def calcular(lines):
 	print('m:', m)
 	print('Densidad:', densidad)
 
-	for i in range(len(grados)):
-		centralidad = grados[i] / (n - 1)
-		print("Grado v" + str(i) + " = " + str(grados[i]) + " Centralidad: " + str(centralidad))
+	for indice, grado in enumerate(grados):
+		centralidad = grado / (n - 1)
+		print("Grado v%d = %g\tCentralidad: %g" % (indice, grado, centralidad))
 
 try:
 	with open(argv[1],'r') as archivo:
