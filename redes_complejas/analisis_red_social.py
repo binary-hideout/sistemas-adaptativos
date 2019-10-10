@@ -26,9 +26,8 @@ def calcular(lines):
 		print("Grado v" + str(i) + " = " + str(grados[i]) + " Centralidad: " + str(centralidad))
 
 try:
-	archivo = open(argv[1],'r')
-	lineas = archivo.readlines()
-	archivo.close()
+	with open(argv[1],'r') as archivo:
+		lineas = archivo.readlines()
 	calcular(lineas)
 except IOError:
 	print('No se pudo abrir el archivo')
