@@ -10,9 +10,9 @@
 '''
 
 def imprime_resultado(cadena):
-'''Imprimir resultado con el formato establecido: 0=blanco, 1=*.
-Entrada: cadena.
-Salida: cadena con formato establecido (anexa guiones al principio y al final).'''
+    '''Imprimir resultado con el formato establecido: 0=blanco, 1=*.
+    Entrada: cadena.
+    Salida: cadena con formato establecido (anexa guiones al principio y al final).'''
     resultado_formato = '_'
     for caracter in cadena:
         if caracter == '1':
@@ -50,32 +50,27 @@ def procesa_ventana(ventana):
 # Salida: cadena nueva (t=i+1)
 def recorre_cadena(cadena):
     nueva_cadena = ''
-
-    for i in range(0, len(cadena)):
-        n = len(cadena)
+    n = len(cadena)
+    for i in range(n):
         ventana = cadena[(i + (n - 1)) % n] + cadena[i] + cadena[(i + 1) % n]
         nueva_cadena += procesa_ventana(ventana)
             
     return nueva_cadena
 
 def correr(iteraciones):
-	#-------------------------------------------------------------
-	#Procedimiento para probar el AC
+    '''Procedimiento para probar el AC.'''
 
-	# Cadenas de prueba
-	cadena1 = "0000000000000000000000000000000000100000000000000000000000000000000000"
-	#cadena2 = "0000100000"
+    # Cadenas de prueba
+    cadena1 = "00000000000000000000000000000000000000000000000000000000000000000000001"
+    #cadena2 = "0000100000"
 
-	cadena_actual = cadena1
+    cadena_actual = cadena1
 
-	# Toma la cantidad de iteraciones como argumento de la linea de comando
-	#iteraciones = sys.argv[1]
-
-	# Por la cantidad fijada de iteraciones:
-	#   Imprime la cadena actual
-	#   Genera una nueva cadena de acuerdo a la regla
-	#   Reemplaza la cadena actual por esta nueva cadena
-	for i in range(0, int(iteraciones)):
-		imprime_resultado(cadena_actual)
-		nueva_cadena = recorre_cadena(cadena_actual)
-		cadena_actual = nueva_cadena
+    # por la cantidad fijada de iteraciones
+    for _ in range(iteraciones):
+        # imprime la cadena actual
+        imprime_resultado(cadena_actual)
+        # genera una nueva cadena de acuerdo a la regla
+        nueva_cadena = recorre_cadena(cadena_actual)
+        # reemplaza la cadena actual por esta nueva cadena
+        cadena_actual = nueva_cadena
