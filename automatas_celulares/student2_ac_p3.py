@@ -69,7 +69,7 @@ def correr(iteraciones):
     '''Procedimiento para probar el AC.'''
 
     # Cadenas de prueba
-    cadena1 = "000000000000000000000000100000000000000000000000"
+    cadena1 = "00000000000000000000000000000000000000001000000000000000000000000000000000000000"
     #cadena2 = "0000100000"
 
     cadena_actual = cadena1
