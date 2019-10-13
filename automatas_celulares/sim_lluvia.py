@@ -9,28 +9,24 @@
  Programa que simula una lluvia de meteoritos utilizando automatas celulares
 '''
 
-import sys
-import math
-import random
-import pygame
-from meteor import *
-from reglas import *
-		
-posiciones=[[100,100],[100,500],[200,300],[200,400],[300,100],[300,300],[300,600],[400,300],[400,500],[500,200],[500,600]]
-configuracion_actual="00000100000"
+from sys import argv
+from meteor import crear_meteoro
+from reglas import recorre_cadena
 
-if(len(sys.argv)<2):
+posiciones = [[100, 100], [100, 500], [200, 300], [200, 400], [300, 100], [300, 300], [300, 600], [400, 300], [400, 500], [500, 200], [500, 600]]
+configuracion_actual = "00000100000"
+
+if (len(argv) < 2):
 	for i in range(len(posiciones)):
-		crear_meteoro(posiciones[i][0],posiciones[i][1])
+		crear_meteoro(posiciones[i][0], posiciones[i][1])
 else:
-	iteraciones=int(sys.argv[1])
+	iteraciones = int(argv[1])
 	for i in range(iteraciones):
 		print(configuracion_actual)
-		j=0
+		j = 0
 		for celda in configuracion_actual:
-			if int(celda)==1:
-				crear_meteoro(posiciones[j][0],posiciones[j][1])
-			j=j+1
-		nueva_configuracion=recorre_cadena(configuracion_actual)
-		configuracion_actual=nueva_configuracion
-	
+			if int(celda) == 1:
+				crear_meteoro(posiciones[j][0], posiciones[j][1])
+			j = j + 1
+		nueva_configuracion = recorre_cadena(configuracion_actual)
+		configuracion_actual = nueva_configuracion
