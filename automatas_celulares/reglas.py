@@ -16,9 +16,9 @@ def imprime_resultado(cadena):
     resultado_formato = '_'
     for caracter in cadena:
         if caracter == '1':
-            resultado_formato += '*'
-        else:
             resultado_formato += ' '
+        else:
+            resultado_formato += '█'
     print(resultado_formato + "_")
 
 # Aplicar la regla con la ventana recibida.
@@ -38,17 +38,26 @@ def imprime_resultado(cadena):
 #    return resultado
 
 # Regla 165: Vecinos con el mismo color=1, de otra manera=0    
+# def procesa_ventana(ventana):
+#     if ventana[0] == ventana[2]:
+#         resultado = '1'
+#     else:
+#         resultado = '0'
+#     return resultado
+
+# Regla 21
 def procesa_ventana(ventana):
-    if ventana[0] == ventana[2]:
+    binario = int(ventana)
+    if binario == 100 or binario == 10 or binario == 0:
         resultado = '1'
     else:
         resultado = '0'
     return resultado
 
-# Generar una nueva cadena de acuerdo a una regla (0-255)
-# Entrada: cadena actual (t=i)
-# Salida: cadena nueva (t=i+1)
 def recorre_cadena(cadena):
+    '''Generar una nueva cadena de acuerdo a una regla (0-255).
+    Entrada: cadena actual (t = i).
+    Salida: cadena nueva (t = i + 1).'''
     nueva_cadena = ''
     n = len(cadena)
     for i in range(n):
@@ -61,7 +70,7 @@ def correr(iteraciones):
     '''Procedimiento para probar el AC.'''
 
     # Cadenas de prueba
-    cadena1 = "00000000000000000000000000000000000000000000000000000000000000000000001"
+    cadena1 = "000000000000000000000000100000000000000000000000"
     #cadena2 = "0000100000"
 
     cadena_actual = cadena1

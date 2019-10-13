@@ -10,7 +10,7 @@
 '''
 
 from sys import argv
-from student2_ac_p3 import correr
+from reglas import correr
 
 iteraciones = int(argv[1])
 correr(iteraciones)
