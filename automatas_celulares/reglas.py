@@ -16,9 +16,9 @@ def imprime_resultado(cadena):
     resultado_formato = '_'
     for caracter in cadena:
         if caracter == '1':
-            resultado_formato += ' '
-        else:
             resultado_formato += '█'
+        else:
+            resultado_formato += ' '
     print(resultado_formato + "_")
 
 # Aplicar la regla con la ventana recibida.
