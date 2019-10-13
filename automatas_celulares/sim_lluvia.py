@@ -14,7 +14,7 @@ import math
 import random
 import pygame
 from meteor import *
-from student2_ac_p3 import *
+from reglas import *
 		
 posiciones=[[100,100],[100,500],[200,300],[200,400],[300,100],[300,300],[300,600],[400,300],[400,500],[500,200],[500,600]]
 configuracion_actual="00000100000"
