@@ -21,10 +21,6 @@ def imprime_resultado(cadena):
             resultado_formato += ' '
     print(resultado_formato + "_")
 
-# Aplicar la regla con la ventana recibida.
-# Entrada: Ventana (coleccion de tres celdas, la central y dos vecinos a los lados)
-# Salida: 0 o 1, dependiendo de la regla utilizada
-
 # Regla 0: Cualquier cosa = 0
 #def procesa_ventana(ventana):
 #    return '0'
@@ -47,6 +43,9 @@ def imprime_resultado(cadena):
 
 # Regla 21
 def procesa_ventana(ventana):
+    '''Aplicar la regla con la ventana recibida.
+    Entrada: Ventana (coleccion de tres celdas, la central y dos vecinos a los lados).
+    Salida: 0 o 1, dependiendo de la regla utilizada.'''
     binario = int(ventana)
     if binario == 100 or binario == 10 or binario == 0:
         resultado = '1'
