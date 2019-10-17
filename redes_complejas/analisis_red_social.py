@@ -1,6 +1,6 @@
 from sys import argv
 
-def calcular(lines):
+def calcular(lineas):
 	n = len(lineas)
 	m = 0
 	grados = list()
