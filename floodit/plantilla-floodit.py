@@ -39,22 +39,19 @@ def generarVentana(filas, diccionario):
     x1, y1, x2, y2 = 0, 0, 20, 20
     for fila in filas:
         for color in fila:
-            canvas.create_rectangle(x1, y1, x2, y2, fill = color, outline = "")
-            y1 += 20
-            y2 += 20
-        x1 += 20
-        x2 += 20
+            canvas.create_rectangle(x1, y1, x2, y2, fill = diccionario[color], outline = "")
+            x1 += 20
+            x2 += 20
+        x1, x2 = 0, 20
+        y1 += 20
+        y2 += 20
     canvas.pack()
     return canvas
 
 def main():
-    # contenido = leerArchivoCL()
-    # canvas = generarVentana(contenido)
-    # canvas.mainloop()
-    root = Tk()
-    canvas = Canvas(root, width = 280, height = 280)
-    canvas.create_rectangle(0, 0, 20, 20, fill = "purple", outline = "")
-    canvas.pack()
+    contenido = leerArchivoCL()
+    diccionario = generarDiccionario()
+    canvas = generarVentana(contenido, diccionario)
     canvas.mainloop()
 
 main()
