@@ -1,16 +1,23 @@
-import tkinter as tk
-import sys
+from tkinter import Tk, Canvas
+from sys import argv
 
-root=tk.Tk()
-c=tk.Canvas(root,width=280,height=280)
+def leerArchivoCL():
+    try:
+        nombre_archivo = argv[1]
+        with open(nombre_archivo, 'r') as archivo:
+            lineas = archivo.readlines()
+        return [linea.strip() for linea in lineas]
+    except IndexError:
+        print("Debe especificarse un archivo a leer como primer argumento del comando.")
+    except FileNotFoundError:
+        print("El archivo '%s' no existe." % nombre_archivo)
+    except IOError:
+        print("Ocurrió un error al leer el archivo '%s'" % nombre_archivo)
+    return None
 
-#CODIFICA AQUI
-
-#Codigo ejemplo para crear un rectangulo
-#c.create_rectangle(0,0,20,20,fill="#ff0000",outline="")
-
-c.pack()
-c.mainloop()
 
 
-	
+def main():
+    pass
+
+main()
