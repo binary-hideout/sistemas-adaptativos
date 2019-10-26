@@ -18,6 +18,23 @@ def leerArchivoCL():
         print("Ocurrió un error al leer el archivo '%s'" % nombre_archivo)
     return None
 
+def generarVentana(filas):
+    """Genera una ventana del juego Flood-It con los colores especificados en el argumento. Debe ser lista de strings.
+    """
+    root = Tk()
+    canvas = Canvas(root, width = 280, height = 280)
+
+    x1, y1, x2, y2 = 0, 0, 20, 20
+    for fila in filas:
+        for color in fila:
+            canvas.create_rectangle(x1, y1, x2, y2, fill = color, outline = "")
+            y1 += 20
+            y2 += 20
+        x1 += 20
+        x2 += 20
+    canvas.pack()
+    return canvas
+
 def main():
     pass
 
