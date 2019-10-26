@@ -2,6 +2,9 @@ from tkinter import Tk, Canvas
 from sys import argv
 
 def leerArchivoCL():
+    """Leer contenido de un archivo especificado en el segundo argumento de la línea de comandos (CL).
+        Regresa el contenido como una lista de cada línea como string.
+    """
     try:
         nombre_archivo = argv[1]
         with open(nombre_archivo, 'r') as archivo:
@@ -14,8 +17,6 @@ def leerArchivoCL():
     except IOError:
         print("Ocurrió un error al leer el archivo '%s'" % nombre_archivo)
     return None
-
-
 
 def main():
     pass
