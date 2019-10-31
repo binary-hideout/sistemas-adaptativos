@@ -1,8 +1,8 @@
 from constantes import pesos, feromonas
-from ant_colony_optimization import optimizarRecorrido
+from ant_colony_optimization import recorrerGrafo
 
 def main():
-    camino = optimizarRecorrido(pesos, feromonas)
+    camino = recorrerGrafo(pesos, feromonas)
     print(camino)
 
 if __name__ == '__main__':

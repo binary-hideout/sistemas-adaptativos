@@ -22,8 +22,8 @@ def seleccionarProbabilidades(pesos, feromonas):
 
     return probabilidades
 
-def optimizarRecorrido(pesos, feromonas, tasa_evaporacion = 0.3, deposito = 1, hormigas = 2):
-    '''Regresa el mejor recorrido encontrado dentro de la matriz 'pesos'.
+def recorrerGrafo(pesos, feromonas):
+    '''Hace un recorrido por el grafo.
     '''
     ciudades_recorridas = [randint(0, 5)]
 
@@ -46,4 +46,4 @@ def optimizarRecorrido(pesos, feromonas, tasa_evaporacion = 0.3, deposito = 1, h
         siguiente_ciudad = siguienteCiudad(probabilidades, ciudades_recorridas)
         ciudades_recorridas.append(siguiente_ciudad)
 
-    return ciudades_recorridas
+    return tuple(ciudades_recorridas)
