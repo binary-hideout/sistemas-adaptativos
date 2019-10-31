@@ -12,7 +12,3 @@ distancias[3] = [33, 15, 24, 0, 17, 7]
 distancias[4] = [8, 5, 23, 17, 0, 22]
 distancias[5] = [2, 3, 13, 7, 22, 0]
 pesos = [d for d in distancias]
-
-TASA_EVAPORACION = 0.3
-DEPOSITO = 1
-HORMIGAS = 2
